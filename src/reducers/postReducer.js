@@ -7,10 +7,13 @@ export default function postReducer(state = [], action) {
     case DELETE_POST:
       return state.filter(post => post._id !== action.payload.id);
     case FETCH_POST:
+      console.log("dispath 1")
       return action.posts;
     case FETCH_POST2:
+     console.log("dispatch 2")
       return action.posts2;
     case FETCH_POST3:
+    console.log("dispatch 3")
       return action.posts3;
     default:
       return state;

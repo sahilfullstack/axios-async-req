@@ -144,6 +144,7 @@ export const fetchPosts = (posts) => {
 };
 
 export const fetchAllPosts = () => {
+  localStorage.setItem("queue_requests", "true")
   return (dispatch) => {
     return axios.get(apiUrl)
       .then(response => {
