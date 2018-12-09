@@ -1,0 +1,9 @@
+export const ADD_POST = 'ADD_POST';
+export const ADD_POST2 = 'ADD_POST2';
+export const ADD_POST3 = 'ADD_POST3';
+export const DELETE_POST = 'DELETE_POST';
+export const DELETE_POST2 = 'DELETE_POST2';
+export const DELETE_POST3 = 'DELETE_POST3';
+export const FETCH_POST = 'FETCH_POST';
+export const FETCH_POST2 = 'FETCH_POST2';
+export const FETCH_POST3 = 'FETCH_POST3';
