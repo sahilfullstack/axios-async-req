@@ -146,7 +146,17 @@ export const fetchPosts = (posts) => {
 export const fetchAllPosts = () => {
   localStorage.setItem("queue_requests", "true")
   return (dispatch) => {
-    return axios.get(apiUrl)
+    return axios.get(apiUrl, {
+      headers:{
+          successCallback: response => {
+            console.log("got the first response")
+            dispatch(fetchPosts({
+              type: FETCH_POST,
+              posts: response.data
+            }))
+          }
+        }
+      })
       .then(response => {
         console.log("got the first response")
         dispatch(fetchPosts(response.data))
@@ -166,7 +176,17 @@ export const fetchPosts2 = (posts2) => {
 
 export const fetchAllPosts2 = () => {
   return (dispatch) => {
-    return axios.get(apiUrl+'/2')
+    return axios.get(apiUrl+'/2', {
+      headers:{
+          successCallback: response => {
+            console.log("got the first response")
+            dispatch(fetchPosts({
+              type: FETCH_POST2,
+              posts2: response.data
+            }))
+          }
+        }
+      })
       .then(response => {
         console.log("got the second response")
         dispatch(fetchPosts2(response.data))
@@ -186,7 +206,17 @@ export const fetchPosts3 = (posts3) => {
 
 export const fetchAllPosts3 = () => {
   return (dispatch) => {
-    return axios.get(apiUrl+'/3')
+    return axios.get(apiUrl+'/3', {
+      headers:{
+          successCallback: response => {
+            console.log("got the first response")
+            dispatch(fetchPosts({
+              type: FETCH_POST3,
+              posts3:response.data
+            }))
+          }
+        }
+      })
       .then(response => {
         console.log("got the third response")
         dispatch(fetchPosts3(response.data))

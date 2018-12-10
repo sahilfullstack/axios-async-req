@@ -20,12 +20,12 @@ axios.interceptors.request.use(function (config) {
   
   console.log("consoling the pipelined config")
   console.log(pipelined_reqests)
-
+  console.log(config.headers.successCallback);
   if(localStorage.getItem("queue_requests") != "true")
   {
     console.log("yes i am request called");
     console.log(config);
-  
+    config.headers.successCallback = null;
     // Do something before request is sent
     return config;
   }
@@ -49,9 +49,34 @@ axios.interceptors.response.use(function (config) {
   for (var key  in local_requests) {
     console.log("looping")
     console.log(local_requests[key])
-    axios(local_requests[key])
+    
+        let successCallback = local_requests[key].headers.successCallback
+        console.log(successCallback)
+        local_requests[key].headers.successCallback= null;
+        console.log(local_requests[key])
+
+        axios(local_requests[key]).then(response => {
+          console.log(successCallback)
+        console.log(response)
+          successCallback(response.data)
+      }).catch(error => {
+        throw(error);
+      });
   }
 
+  var defer = function() {
+    var res, rej;
+
+    var promise = new Promise(function(resolve, reject) {
+        res = resolve;
+        rej = reject;
+    });
+
+    promise.resolve = res;
+    promise.reject = rej;
+
+    return promise;
+}
   console.log("yes i am response called");
   console.log(config);
 
