@@ -1,5 +1,6 @@
 import { ADD_POST, ADD_POST2, ADD_POST3, DELETE_POST, DELETE_POST2, DELETE_POST3, FETCH_POST, FETCH_POST2, FETCH_POST3 } from './types';
 import axios from 'axios';
+import {request_get} from './request.js';
 
 const apiUrl = 'http://localhost:4000/posts';
 
@@ -144,14 +145,19 @@ export const fetchPosts = (posts) => {
 };
 
 export const fetchAllPosts = () => {
-  localStorage.setItem("queue_requests", "true")
+  // axios.get(apiUrl)
+  //     .then(response => {
+  //       console.log("got the first response")
+  //       dispatch(fetchPosts(response.data))
+  //     })
+  //     .catch(error => {
+  //       throw(error);
+  //     });
   return (dispatch) => {
-    return axios.get(apiUrl)
-      .then(response => {
+    return request_get(apiUrl, response => {
         console.log("got the first response")
         dispatch(fetchPosts(response.data))
-      })
-      .catch(error => {
+      }, error => {
         throw(error);
       });
   };
@@ -165,13 +171,20 @@ export const fetchPosts2 = (posts2) => {
 };
 
 export const fetchAllPosts2 = () => {
+
+  // axios.get(apiUrl+'/2')
+  //     .then(response => {
+  //       console.log("got the second response")
+  //       dispatch(fetchPosts2(response.data))
+  //     })
+  //     .catch(error => {
+  //       throw(error);
+  //     });
   return (dispatch) => {
-    return axios.get(apiUrl+'/2')
-      .then(response => {
+    return request_get(apiUrl+'/2', response => {
         console.log("got the second response")
         dispatch(fetchPosts2(response.data))
-      })
-      .catch(error => {
+      }, error => {
         throw(error);
       });
   };
@@ -185,13 +198,19 @@ export const fetchPosts3 = (posts3) => {
 };
 
 export const fetchAllPosts3 = () => {
+  // axios.get(apiUrl+'/3')
+  //     .then(response => {
+  //       console.log("got the third response")
+  //       dispatch(fetchPosts3(response.data))
+  //     })
+  //     .catch(error => {
+  //       throw(error);
+  //     });
   return (dispatch) => {
-    return axios.get(apiUrl+'/3')
-      .then(response => {
+    return request_get(apiUrl+'/3', response => {
         console.log("got the third response")
         dispatch(fetchPosts3(response.data))
-      })
-      .catch(error => {
+      }, error => {
         throw(error);
       });
   };
