@@ -207,13 +207,14 @@ export const fetchAllPosts3 = () => {
   //     .catch(error => {
   //       throw(error);
   //     });
-  return (dispatch) => {
-    return get(apiUrl+'/3');
+  return get(apiUrl+'/3');
+  // return (dispatch) => {
+  //   return get(apiUrl+'/3');
     // return request_get(apiUrl+'/3', response => {
     //     console.log("got the third response")
     //     dispatch(fetchPosts3(response.data))
     //   }, error => {
     //     throw(error);
     //   });
-  };
+  // };
 };
