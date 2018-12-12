@@ -1,7 +1,10 @@
 import axios from 'axios';
+import {globalMap} from './../globalConstant'
 
 export const request_get = (apiUrl, responseCallback, errorCallback) => {
-    return axios.get(apiUrl)
+  globalMap.push("a");
+  console.log(globalMap)
+  return axios.get(apiUrl)
     .then(response => {
       responseCallback(response)
     })
@@ -12,7 +15,8 @@ export const request_get = (apiUrl, responseCallback, errorCallback) => {
 
 
   export const request_pipeline_get = (apiUrl, responseCallback, errorCallback) => {
-    
+    globalMap.push("b");
+    console.log(globalMap)
     let apiUrl2 = apiUrl+'/2'
     let apiUrl3 = apiUrl+'/3'
 
@@ -29,12 +33,13 @@ export const request_get = (apiUrl, responseCallback, errorCallback) => {
       url: apiUrl3
     });
 
+  
     pipeline_requests.push(requestObject)
     pipeline_requests.push(requestObject2)
     pipeline_requests.push(requestObject3)
-    
+
     for(let key in pipeline_requests)
-    {
+    {      
       pipeline_requests[key].call().then(response => {
         responseCallback(response)
       }).catch(error => {

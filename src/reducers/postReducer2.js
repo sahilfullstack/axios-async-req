@@ -9,6 +9,9 @@ export default function postReducer3(state = [], action) {
     case FETCH_POST2:
       console.log("dispatch 22")
       return action.posts2;
+    case FETCH_POST2:
+      console.log("dispatch 22")
+      return action.posts2;
     default:
       return state;
   }

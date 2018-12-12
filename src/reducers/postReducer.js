@@ -11,5 +11,5 @@ export default function postReducer(state = [], action) {
       return action.posts;
     default:
       return state;
-  }
+  }  
 }

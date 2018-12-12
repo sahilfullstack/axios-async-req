@@ -145,6 +145,7 @@ export const fetchPosts = (posts) => {
 };
 
 export const fetchAllPosts = () => {
+
   // axios.get(apiUrl)
   //     .then(response => {
   //       console.log("got the first response")
