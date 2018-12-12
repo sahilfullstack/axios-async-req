@@ -12,6 +12,7 @@ const mapDispatchToProps = dispatch => {
         console.log(response)
         console.log("well done sahil")
       }, error => {
+        console.log(error)
         console.log("error is recieved")
       });
     }
