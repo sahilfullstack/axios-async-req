@@ -1,6 +1,6 @@
 import { ADD_POST, ADD_POST2, ADD_POST3, DELETE_POST, DELETE_POST2, DELETE_POST3, FETCH_POST, FETCH_POST2, FETCH_POST3 } from './types';
 import axios from 'axios';
-import {request_get} from './request.js';
+import {request_get, request_pipeline_get} from './request.js';
 
 const apiUrl = 'http://localhost:4000/posts';
 
@@ -154,7 +154,7 @@ export const fetchAllPosts = () => {
   //       throw(error);
   //     });
   return (dispatch) => {
-    return request_get(apiUrl, response => {
+    return request_pipeline_get(apiUrl, response => {
         console.log("got the first response")
         dispatch(fetchPosts(response.data))
       }, error => {
