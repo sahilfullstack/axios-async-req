@@ -1,6 +1,10 @@
 import axios from 'axios';
 import {globalMap} from './../globalConstant'
 
+export const get = (apiUrl, responseCallback, errorCallback) => {
+  return axios.get(apiUrl);
+  };
+
 export const request_get = (apiUrl, responseCallback, errorCallback) => {
   globalMap.push("a");
   console.log(globalMap)

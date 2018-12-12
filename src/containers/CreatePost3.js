@@ -8,7 +8,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(createPost3(post));
     },
     fetchAllPosts3: () => {
-      dispatch(fetchAllPosts3());
+      dispatch(fetchAllPosts3()).then(response=>{
+        console.log("well done sahil")
+      });
     }
   };
 };

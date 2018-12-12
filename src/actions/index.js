@@ -1,6 +1,6 @@
 import { ADD_POST, ADD_POST2, ADD_POST3, DELETE_POST, DELETE_POST2, DELETE_POST3, FETCH_POST, FETCH_POST2, FETCH_POST3 } from './types';
 import axios from 'axios';
-import {request_get, request_pipeline_get} from './request.js';
+import {get, request_get, request_pipeline_get} from './request.js';
 
 const apiUrl = 'http://localhost:4000/posts';
 
@@ -208,11 +208,12 @@ export const fetchAllPosts3 = () => {
   //       throw(error);
   //     });
   return (dispatch) => {
-    return request_get(apiUrl+'/3', response => {
-        console.log("got the third response")
-        dispatch(fetchPosts3(response.data))
-      }, error => {
-        throw(error);
-      });
+    return get(apiUrl+'/3');
+    // return request_get(apiUrl+'/3', response => {
+    //     console.log("got the third response")
+    //     dispatch(fetchPosts3(response.data))
+    //   }, error => {
+    //     throw(error);
+    //   });
   };
 };
