@@ -8,7 +8,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(createPost3(post));
     },
     fetchAllPosts3: () => {
-      dispatch(fetchAllPosts3()).then(response=>{
+      fetchAllPosts3().then(response=>{
+        console.log(response)
         console.log("well done sahil")
       }, error => {
         console.log("error is recieved")

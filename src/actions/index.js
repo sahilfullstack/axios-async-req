@@ -198,7 +198,7 @@ export const fetchPosts3 = (posts3) => {
   }
 };
 
-export const fetchAllPosts3 = () => {
+export const fetchAllPosts3 = async () => {
   // axios.get(apiUrl+'/3')
   //     .then(response => {
   //       console.log("got the third response")
@@ -207,7 +207,7 @@ export const fetchAllPosts3 = () => {
   //     .catch(error => {
   //       throw(error);
   //     });
-  return get(apiUrl+'/3');
+  return await get(apiUrl+'/3');
   // return (dispatch) => {
   //   return get(apiUrl+'/3');
     // return request_get(apiUrl+'/3', response => {
